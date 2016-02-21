@@ -2,6 +2,8 @@
 
 A plugin to run the current file in a terminal split using neovim's terminal functionality.
 
+This plugin is based on [vim-go's](https://github.com/fatih/vim-go) `:GoRun`.
+
 *Requires [Neovim](https://neovim.io)*
 
 ## Install
