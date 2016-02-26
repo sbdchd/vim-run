@@ -28,7 +28,7 @@ let g:run#cmd#defaults#java = [
             \ s:fullfilepath,
             \ '&&',
             \ 'java',
-            \ s:fullfilename
+            \ s:basefilename
             \ ]
 let g:run#cmd#defaults#js = [
             \ 'node',
