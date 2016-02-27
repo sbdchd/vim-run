@@ -30,7 +30,7 @@ let g:run#cmd#defaults#java = [
             \ 'java',
             \ s:basefilename
             \ ]
-let g:run#cmd#defaults#js = [
+let g:run#cmd#defaults#javascript = [
             \ 'node',
             \ s:fullfilepath
             \ ]
