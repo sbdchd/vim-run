@@ -59,3 +59,11 @@ let g:run#cmd#defaults#sh = [
             \ 'sh',
             \ s:fullfilepath
             \ ]
+let g:run#cmd#defaults#idris = [
+            \ 'idris',
+            \ s:fullfilepath
+            \ ]
+let g:run#cmd#defaults#haskell = [
+            \ 'ghci',
+            \ s:fullfilepath
+            \ ]
