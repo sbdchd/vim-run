@@ -4,7 +4,7 @@ A plugin to run the current file in a terminal split using neovim's terminal fun
 
 This plugin is based on [vim-go's](https://github.com/fatih/vim-go) `:GoRun`.
 
-*Requires [Neovim](https://neovim.io)*
+_Requires [Neovim](https://neovim.io)_
 
 ## Install
 
@@ -35,7 +35,7 @@ Otherwise, `:Run` will use the default command for the filetype.
 
 You can define your own default commands for specific filetypes.
 
-*Note:* Your command must be in the naming scheme `g:run_cmd_<FILETYPE>` and must
+_Note:_ Your command must be in the naming scheme `g:run_cmd_<FILETYPE>` and must
 also include all necessary paths.
 
 ```viml
@@ -53,3 +53,23 @@ Choose the direction of splitting (up, down, left, right).
 ```viml
 let g:run_split = 'down'
 ```
+
+## Supported Filetypes
+
+- Applescript
+- Bash
+- Coffescript
+- Elixir
+- Erlang (Escript)
+- Go
+- Haskell (GHCI)
+- Idris
+- Java
+- Javascript (Node)
+- Lua
+- Perl
+- Php
+- Python
+- Ruby
+- Sh
+- Typescript

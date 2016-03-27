@@ -23,7 +23,7 @@ function! g:run#cmd#GenCmd(...) abort
         let l:cmd = eval(l:ftcmd)
         return join(l:cmd)
     else
-        echoerr 'vim-run: command for filetype not found'
+        echom 'vim-run: command for filetype not found'
         return ''
     endif
 endfunction

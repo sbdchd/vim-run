@@ -10,18 +10,22 @@ let g:run#cmd#defaults#applescript = [
             \ 'osascript',
             \ s:fullfilepath
             \ ]
+
 let g:run#cmd#defaults#bash = [
             \ 'bash',
             \ s:fullfilepath
             \ ]
+
 let g:run#cmd#defaults#erlang = [
             \ 'escript',
             \ s:fullfilepath
             \ ]
+
 let g:run#cmd#defaults#go = [
             \ 'go run',
             \ s:fullfilepath
             \ ]
+
 let g:run#cmd#defaults#java = [
             \ 'javac',
             \ '-g:none',
@@ -30,22 +34,27 @@ let g:run#cmd#defaults#java = [
             \ 'java',
             \ s:basefilename
             \ ]
+
 let g:run#cmd#defaults#javascript = [
             \ 'node',
             \ s:fullfilepath
             \ ]
+
 let g:run#cmd#defaults#lua = [
             \ 'lua',
             \ s:fullfilepath
             \ ]
+
 let g:run#cmd#defaults#perl = [
             \ 'perl',
             \ s:fullfilepath
             \ ]
+
 let g:run#cmd#defaults#php = [
             \ 'php',
             \ s:fullfilepath
             \ ]
+
 let g:run#cmd#defaults#python = [
             \ 'python',
             \ s:fullfilepath
@@ -55,15 +64,36 @@ let g:run#cmd#defaults#ruby = [
             \ 'ruby',
             \ s:fullfilepath
             \ ]
+
 let g:run#cmd#defaults#sh = [
             \ 'sh',
             \ s:fullfilepath
             \ ]
+
 let g:run#cmd#defaults#idris = [
             \ 'idris',
             \ s:fullfilepath
             \ ]
+
 let g:run#cmd#defaults#haskell = [
             \ 'ghci',
+            \ s:fullfilepath
+            \ ]
+
+let g:run#cmd#defaults#coffee = [
+            \ 'coffee',
+            \ s:fullfilepath
+            \ ]
+
+let g:run#cmd#defaults#typescript = [
+            \ 'tsc',
+            \ s:fullfilepath,
+            \ '&&',
+            \ 'node',
+            \ s:basefilename . '.js'
+            \ ]
+
+let g:run#cmd#defaults#elixir = [
+            \ 'elixir',
             \ s:fullfilepath
             \ ]

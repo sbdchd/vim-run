@@ -2,7 +2,7 @@ let s:jobs = {}
 
 function! g:run#Run(...) abort
     if !has('nvim')
-        echoerr 'vim-run: neovim is currently required for this plugin'
+        echom 'vim-run: neovim is currently required for this plugin'
         return
     endif
 
