@@ -1,29 +1,40 @@
-function! g:run#cmd#GenCmd(...) abort
-    let s:fullfilepath = fnameescape(expand('%:p'))
-    "arg cmd
+function! run#cmd#GenCmd(...) abort
+    let l:fullfilepath = fnameescape(expand('%:p'))
+
+    " arg cmd
     let l:args = join(a:000)
     if l:args !=# ''
-        return l:args . ' ' . s:fullfilepath
+        return l:args . ' ' . l:fullfilepath
     endif
-    "shebang cmd
+
+    " shebang cmd
     let l:firstline = getline(1)
     if l:firstline =~? '#!.*'
-        let l:shecmd = [l:firstline[2:], s:fullfilepath]
+        let l:shecmd = [l:firstline[2:], l:fullfilepath]
         return join(l:shecmd)
     endif
-    "user config cmd
+
+    " user config cmd
     let l:usrcfg = 'g:run_cmd_' . &filetype
     if exists(l:usrcfg)
         let l:cmd = eval(l:usrcfg)
+        if len(l:cmd) == 1
+            return join(l:cmd) . ' ' . l:fullfilepath
+        endif
         return join(l:cmd)
     endif
-    "filetype cmd
-    let l:ftcmd = 'g:run#cmd#defaults#' . &filetype
-    if exists(l:ftcmd)
-        let l:cmd = eval(l:ftcmd)
-        return join(l:cmd)
-    else
+
+    " filetype cmd
+    try
+        let l:cmd = eval('run#defaults#' . &filetype . '()')
+    catch /^Vim\%((\a\+)\)\=:E117/
         echom 'vim-run: command for filetype not found'
         return ''
+    endtry
+
+    if len(l:cmd) == 1
+        return join(l:cmd) . ' ' . l:fullfilepath
     endif
+
+    return join(l:cmd)
 endfunction

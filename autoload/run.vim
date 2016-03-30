@@ -1,15 +1,15 @@
 let s:jobs = {}
 
-function! g:run#Run(...) abort
+function! run#Run(...) abort
     if !has('nvim')
         echom 'vim-run: neovim is currently required for this plugin'
         return
     endif
 
     let l:args = join(a:000)
-    let l:cmd = g:run#cmd#GenCmd(l:args)
+    let l:cmd = run#cmd#GenCmd(l:args)
     if l:cmd ==# ''
-      return
+        return
     endif
 
     call s:split()
@@ -38,14 +38,14 @@ function! s:split() abort
     endif
 
     let l:directions = {
-         \ 'up':    'topleft split',
-         \ 'down':  'botright split',
-         \ 'right': 'botright vsplit',
-         \ 'left':  'topleft vsplit',
-         \ }
+                \ 'up':    'topleft split',
+                \ 'down':  'botright split',
+                \ 'right': 'botright vsplit',
+                \ 'left':  'topleft vsplit',
+                \ }
 
     if has_key(l:directions, l:direction)
-      execute l:directions[l:direction] . ' Run'
+        execute l:directions[l:direction] . ' Run'
     endif
 
     setlocal nobuflisted
@@ -85,7 +85,7 @@ function! s:on_exit(job_id, data) abort
     unlet s:jobs[a:job_id]
 endfunction
 
-function! g:run#KillAll() abort
+function! run#KillAll() abort
     if empty(s:jobs)
         return
     endif

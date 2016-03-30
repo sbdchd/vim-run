@@ -16,7 +16,9 @@ Plug 'sbdchd/vim-run'
 
 ## Usage
 
-Use the command `:Run` to run the current file with the default shebang / command.
+Run the current file with the default shebang / command.
+
+`:Run`
 
 To specify a command to run the current file, pass the command and its arguments
 to `:Run`. The filepath will be automatically appended.
@@ -35,14 +37,28 @@ Otherwise, `:Run` will use the default command for the filetype.
 
 You can define your own default commands for specific filetypes.
 
-_Note:_ Your command must be in the naming scheme `g:run_cmd_<FILETYPE>` and must
-also include all necessary paths.
+_Note:_ Your command must be in the naming scheme `g:run_cmd_<FILETYPE>`.
+
+If your command is only one element long, then the filepath with be added automatically.
 
 ```viml
-let g:run_cmd_python = 'Python3' . fnameescape(expand('%:p'))
+let g:run_cmd_python = ['python3']
 ```
 
-Enabled auto-closing of Run output window when the command exits.
+A more advance example.
+
+```viml
+let g:run_cmd_java = [
+                \ 'javac',
+                \ '-g:none',
+                \ run#defaults#fullfilepath(),
+                \ '&&',
+                \ 'java',
+                \ run#defaults#basefilename()
+                \ ]
+```
+
+Enabled auto-closing of `:Run` output window when the command exits.
 
 ```viml
 let g:run_auto_close = 1
