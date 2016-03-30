@@ -27,6 +27,12 @@ to `:Run`. The filepath will be automatically appended.
 :Run python3 -b -E
 ```
 
+Run the current file using a specific filetype.
+
+```viml
+:Run javascript
+```
+
 If you wish to end execution before the program has returned, simply type
 `<ctrl> + c` or return to normal mode by hitting `<escape>` and then type `:q`.
 
