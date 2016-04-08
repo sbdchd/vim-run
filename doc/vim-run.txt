@@ -1,0 +1,103 @@
+*vim-run.txt*	A Neovim plugin to run the current file in a terminal split.
+
+Version: 0.1
+
+CONTENTS					*vim-run-contents*
+
+Introduction		|vim-run-introduction|
+Install			    |vim-run-install|
+Usage			    |vim-run-usage|
+Supported Filetypes	|vim-run-supported-filetypes|
+
+==============================================================================
+INTRODUCTION					*vim-run-introduction*
+
+*vim-run* uses a variety of formatters for differing filetypes.
+Currently, *vim-run* will run a formatter asynchronously, and on success it
+will update the current buffer with the formatted text. On a formatter failure,
+*vim-run* will try the next formatter defined for the filetype.
+
+The job control is based off of vim-go's.
+
+==============================================================================
+INSTALL						*vim-run-install*
+
+Install with [vim-plug](https://github.com/junegunn/vim-plug)
+>
+	Plug 'sbdchd/vim-run'
+<
+==============================================================================
+USAGE						*vim-run-usage* *Run*
+
+Run the current file with the default shebang / command.
+>
+	:Run
+<
+To specify a command to run the current file, pass the command and its arguments
+to `:Run`. The filepath will be automatically appended.
+>
+	:Run python3 -b -E
+<
+Run the current file using a specific filetype.
+>
+	:Run javascript
+<
+If you wish to end execution before the program has returned, simply type
+`<ctrl> + c` or return to normal mode by hitting `<escape>` and then type `:q`.
+
+If the file has a shebang, `:Run` will execute the file using that shebang.
+Otherwise, `:Run` will use the default command for the filetype.
+
+==============================================================================
+CONFIGURATION					*vim-run-usage*
+
+You can define your own default commands for specific filetypes.
+
+Note: Your command must be in the naming scheme `g:run_cmd_<FILETYPE>`.
+
+If your command is only one element long, then the filepath with be added automatically.
+>
+    let g:run_cmd_python = ['python3']
+<
+A more advance example.
+>
+    let g:run_cmd_java = [
+		    \ 'javac',
+		    \ '-g:none',
+		    \ run#defaults#fullfilepath(),
+		    \ '&&',
+		    \ 'java',
+		    \ run#defaults#basefilename()
+		    \ ]
+<
+Enabled auto-closing of `:Run` output window when the command exits.
+>
+    let g:run_auto_close = 1
+<
+Choose the direction of splitting (up, down, left, right).
+>
+    let g:run_split = 'down'
+<
+==============================================================================
+SUPPORTED FILETYPES				*vim-run-supported-filetypes*
+
+- Applescript
+- Bash
+- Coffescript
+- Elixir
+- Erlang (Escript)
+- Go
+- Haskell (GHCI)
+- Idris
+- Java
+- Javascript (Node)
+- Lua
+- Perl
+- Php
+- Python
+- Ruby
+- Sh
+- Typescript
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:noet:fen:noet:
