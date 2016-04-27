@@ -92,3 +92,7 @@ endfunction
 function! run#defaults#elixir() abort
     return ['elixir']
 endfunction
+
+function! run#defaults#moon() abort
+    return ['moon']
+endfunction
