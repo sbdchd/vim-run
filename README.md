@@ -89,6 +89,7 @@ let g:run_split = 'down'
 - Java
 - Javascript (Node)
 - Lua
+- Moonscript
 - Perl
 - Php
 - Python
