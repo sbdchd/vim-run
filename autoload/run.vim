@@ -54,7 +54,7 @@ function! s:split() abort
     set filetype=Run
 endfunction
 
-function! s:on_stdout(job_id, data) abort
+function! s:on_stdout(job_id, data, ...) abort
     if !has_key(s:jobs, a:job_id)
         return
     endif
@@ -63,7 +63,7 @@ function! s:on_stdout(job_id, data) abort
     call extend(l:job.stdout, a:data)
 endfunction
 
-function! s:on_stderr(job_id, data) abort
+function! s:on_stderr(job_id, data, ...) abort
     if !has_key(s:jobs, a:job_id)
         return
     endif
@@ -72,7 +72,7 @@ function! s:on_stderr(job_id, data) abort
     call extend(l:job.stderr, a:data)
 endfunction
 
-function! s:on_exit(job_id, data) abort
+function! s:on_exit(job_id, data, ...) abort
     if !has_key(s:jobs, a:job_id)
         return
     endif
