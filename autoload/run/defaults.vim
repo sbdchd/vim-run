@@ -93,6 +93,10 @@ function! run#defaults#elixir() abort
     return ['elixir']
 endfunction
 
+function! run#defaults#rust() abort
+	return ['cargo run']
+endfunction
+
 function! run#defaults#moon() abort
     return ['moon']
 endfunction
